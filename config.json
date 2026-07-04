@@ -1,0 +1,33 @@
+{
+  "log": {
+    "level": "info",
+    "timestamp": true
+  },
+  "inbounds": [
+    {
+      "type": "vless",
+      "tag": "vless-in",
+      "listen": "::",
+      "listen_port": 8080,
+      "users": [
+        {
+          "name": "",
+          "uuid": "64d0b72a-bd48-4131-9a40-f4b4be2080c2"
+        }
+      ],
+       "tls": {
+        "enabled": false // 本地解密由 cloudflared 处理，这里必须为 false
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/"
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "direct"
+    }
+  ]
+}
