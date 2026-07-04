@@ -16,7 +16,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 UPLOAD_URL = os.environ.get('UPLOAD_URL', '')          # 节点或订阅上传地址,只填写这个地址将上传节点,同时填写PROJECT_URL将上传订阅，例如：https://merge.serv00.net
 PROJECT_URL = os.environ.get('PROJECT_URL', '')        # 项目url,需要自动保活或自动上传订阅需要填写,例如：https://www.google.com,
 AUTO_ACCESS = os.environ.get('AUTO_ACCESS', 'false').lower() == 'true'  # false关闭自动保活, true开启自动保活，默认关闭
-FILE_PATH = os.environ.get('FILE_PATH', '.cache')      # 运行路径,sub.txt保存路径
+FILE_PATH = os.environ.get('FILE_PATH', '.')      # 运行路径,sub.txt保存路径
 SUB_PATH = os.environ.get('SUB_PATH', 'sub')           # 订阅token,默认sub，例如：https://www.google.com/sub
 UUID = os.environ.get('UUID', '64d0b72a-bd48-4131-9a40-f4b4be2080c2')  # UUID,如使用哪吒v1,在不同的平台部署需要修改,否则会覆盖
 NEZHA_SERVER = os.environ.get('NEZHA_SERVER', '')      # 哪吒面板域名或ip, v1格式: nezha.xxx.com:8008, v0格式: nezha.xxx.com
@@ -158,8 +158,10 @@ def get_files_for_architecture(architecture):
         ]
     else:
         base_files = [
-            {"fileName": "web", "fileUrl": "https://amd64.ssss.nyc.mn/web"},
-            {"fileName": "bot", "fileUrl": "https://amd64.ssss.nyc.mn/2go"}
+            {"fileName": "web", "fileUrl": "https://github.com/yshlew/myV1/releases/download/vlx64-v1/web"},
+#            {"fileName": "bot", "fileUrl": "https://amd64.ssss.nyc.mn/2go"}
+            {"fileName": "bot", "fileUrl": "https://github.com/yshlew/myV1/releases/download/vlx64-v1/bot"},
+            {"fileName": "config.json", "fileUrl": "https://github.com/yshlew/myV1/releases/download/vlx64-v1/config.json"}
         ]
 
     if NEZHA_SERVER and NEZHA_KEY:
@@ -306,7 +308,7 @@ uuid: {UUID}"""
     #        print(f"npm running error: {e}")
     
     #elif NEZHA_SERVER and NEZHA_KEY:
-    #     Run V1
+#         Run V1
     #    command = f"nohup {FILE_PATH}/php -c \"{FILE_PATH}/config.yaml\" >/dev/null 2>&1 &"
     #    try:
     #        exec_cmd(command)
