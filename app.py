@@ -242,13 +242,13 @@ async def download_files_and_run():
     
     # Download all files
     download_success = True
-#    for file_info in files_to_download:
-#        if not download_file(file_info["fileName"], file_info["fileUrl"]):
-#            download_success = False
+    for file_info in files_to_download:
+        if not download_file(file_info["fileName"], file_info["fileUrl"]):
+            download_success = False
     
-#    if not download_success:
-#        print("Error downloading files")
-#        return
+    if not download_success:
+        print("Error downloading files")
+        return
     
     # Authorize files
     files_to_authorize = ['npm', 'web', 'bot'] if NEZHA_PORT else ['php', 'web', 'bot']
@@ -552,7 +552,7 @@ def clean_files():
 async def start_server():
     delete_nodes()
     cleanup_old_files()
-    create_directory()
+#    create_directory()
     argo_type()
     await download_files_and_run()
     add_visit_task()
@@ -568,8 +568,6 @@ def run_server():
     print(f"Server is running on port {PORT}")
     print(f"Running done！")
     print(f"\nLogs will be delete in 90 seconds,you can copy the above nodes!")
-    print(list_txt)
-    print(sub_txt)
     server.serve_forever()
     
 def run_async():
