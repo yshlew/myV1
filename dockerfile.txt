@@ -1,5 +1,7 @@
 FROM python:3.10-alpine
 
+ENV PORT=3000
+ENV AUTO_ACCESS=true
 WORKDIR /app
 
 COPY . .
@@ -10,4 +12,4 @@ RUN apk update && apk --no-cache add openssl bash curl &&\
     chmod +x app.py &&\
     pip install -r requirements.txt
     
-CMD ["/bin/sh", "-c", "AUTO_ACCESS=true PORT=3000 python3 app.py && echo 'All done!'"]
+CMD ["/bin/sh", "-c", "AUTO_ACCESS=true python3 app.py"]
