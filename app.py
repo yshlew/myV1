@@ -568,6 +568,8 @@ def run_server():
     print(f"Server is running on port {PORT}")
     print(f"Running done！")
     print(f"\nLogs will be delete in 90 seconds,you can copy the above nodes!")
+    print(list_txt)
+    print(sub_txt)
     server.serve_forever()
     
 def run_async():
