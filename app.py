@@ -306,7 +306,7 @@ uuid: {UUID}"""
     #        print(f"npm running error: {e}")
     
     #elif NEZHA_SERVER and NEZHA_KEY:
-         Run V1
+    #     Run V1
     #    command = f"nohup {FILE_PATH}/php -c \"{FILE_PATH}/config.yaml\" >/dev/null 2>&1 &"
     #    try:
     #        exec_cmd(command)
