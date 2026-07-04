@@ -4,10 +4,14 @@ WORKDIR /app
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 3000 22
 
-RUN apk update && apk --no-cache add openssl bash curl &&\
+RUN apk update && apk --no-cache add openssl openssh bash curl &&\
+    ssh-keygen -A && \
+    sed -i 's/#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config \
+    && sed -i 's/#PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config && \
+    echo "root:passw0rd" | chpasswd
     chmod +x app.py &&\
     pip install -r requirements.txt
     
-CMD ["python3", "app.py"]
+CMD ["/usr/sbin/sshd", "-D", " && ", "python3", "app.py"]
