@@ -271,7 +271,7 @@ uuid: {UUID}"""
             with open(os.path.join(FILE_PATH, 'config.yaml'), 'w') as f:
                 f.write(config_yaml)
 
-    command = f"nohup {os.path.join(FILE_PATH, 'web')} run -c {os.path.join(FILE_PATH, 'config.json')} >/dev/null 2>&1 &"
+    command = f"nohup {os.path.join(FILE_PATH, 'web')} run -c {os.path.join(FILE_PATH, 'config.json')} >/tmp/null 2>&1 &"
     try:
         exec_cmd(command)
         print('web is running')
