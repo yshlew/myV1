@@ -16,4 +16,4 @@ RUN apk update && apk --no-cache add openssl openssh bash curl &&\
     chmod +x app.py &&\
     pip install -r requirements.txt
     
-CMD ["/bin/sh", "-c", "/usr/sbin/sshd && echo 'Starting...' && AUTO_ACCESS=true PORT=3000 python3 app.py "]
+CMD ["/bin/sh", "-c", "/usr/sbin/sshd && echo 'Starting...' && AUTO_ACCESS=true python3 app.py "]
