@@ -8,7 +8,7 @@ COPY . .
 
 EXPOSE 8080 3000 22
 
-RUN apk update && apk --no-cache add openssl openssh bash curl &&\
+RUN apk update && apk --no-cache add openssl openssh bash curl iproute2 btop tmux &&\
     ssh-keygen -A && \
     sed -i 's/#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config && \
     sed -i 's/#PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config && \
